@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
-import '../../bar/bottom_navigation_bar.dart'; // Импортируйте страницу отчетов
+import 'package:myadjutor/bar/bottom_navigation_bar.dart';
+import 'package:myadjutor/pages/base_page.dart';
 
 class ReportPage extends StatelessWidget {
   final int selectedIndex;
+  final Widget logo;
 
   const ReportPage({
     required this.selectedIndex,
+    required this.logo,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Report Page'),
+    return BasePage(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          // Вставьте здесь свою логику для обновления страницы
+          // Временная задержка для имитации обновления данных
+          await Future.delayed(Duration(seconds: 1));
+        },
+        child: ListView(
+          children: [
+            Center(
+              child: Text('Report Page'),
+            ),
+          ],
+        ),
       ),
-      body: const Text('Report Page'), // Пустой контейнер для тестирования
-      bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: selectedIndex,
-      ),
+      selectedIndex: selectedIndex,
+      logo: logo,
     );
   }
 }

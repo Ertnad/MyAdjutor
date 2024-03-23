@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // Установим начальный маршрут
       routes: {
         '/': (context) => TrainPage(logo: logo), // Главная страница
-        '/reports': (context) => ReportPage(selectedIndex: 1), // Страница отчетов
+        '/reports': (context) => ReportPage(selectedIndex: 1, logo: logo),
       },
     );
   }

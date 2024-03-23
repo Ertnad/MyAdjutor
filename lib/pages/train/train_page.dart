@@ -1,11 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:myadjutor/bar/bottom_navigation_bar.dart';
-import 'package:myadjutor/bar/side_menu.dart';
-import 'package:myadjutor/bar/top_bar.dart';
+import 'package:myadjutor/pages/base_page.dart';
 
 class TrainPage extends StatefulWidget {
   final Widget logo;
@@ -70,33 +67,17 @@ class _TrainPageState extends State<TrainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomTopAppBar(
-        logo: widget.logo,
-      ),
-      drawer: const CustomDrawer(),
+    return BasePage(
       body: RefreshIndicator(
         onRefresh: _handleRefresh,
         child: ListView(
           children: <Widget>[
+            WelcomeAndDayInfo(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _getGreeting(),
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        _getDayInfo(),
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
                   const SizedBox(height: 20),
                   const Text(
                     'Цитата:',
@@ -115,36 +96,13 @@ class _TrainPageState extends State<TrainPage> {
             Container(
               alignment: Alignment.topCenter,
               padding: const EdgeInsets.only(top: 50), // Добавляем отступ для показа заголовка вверху
-              child: Text('Другой контент здесь'),
+              child: const Text('Другой контент здесь'),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: 0,
-      ),
+      selectedIndex: 0,
+      logo: widget.logo,
     );
-  }
-
-  String _getGreeting() {
-    var hour = DateTime.now().hour;
-    if (hour < 12) {
-      return 'Доброго утра';
-    } else if (hour < 17) {
-      return 'Доброго дня';
-    } else {
-      return 'Доброго вечера';
-    }
-  }
-
-  String _getDayInfo() {
-    var now = DateTime.now();
-    var formatter = DateFormat('EEEE dd MMMM', 'ru');
-    var dayInfo = formatter.format(now);
-    return capitalizeFirstLetter(dayInfo);
-  }
-
-  String capitalizeFirstLetter(String str) {
-    return str[0].toUpperCase() + str.substring(1);
   }
 }
