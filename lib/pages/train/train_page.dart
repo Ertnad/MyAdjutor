@@ -6,8 +6,9 @@ import 'package:myadjutor/pages/base_page.dart';
 
 class TrainPage extends StatefulWidget {
   final Widget logo;
+  final int selectedIndex; // Добавлен параметр selectedIndex
 
-  const TrainPage({Key? key, required this.logo}) : super(key: key);
+  const TrainPage({Key? key, required this.logo, required this.selectedIndex}) : super(key: key);
 
   @override
   _TrainPageState createState() => _TrainPageState();
@@ -21,7 +22,8 @@ class _TrainPageState extends State<TrainPage> {
   void initState() {
     super.initState();
     getLastUpdateDate().then((value) {
-      if (value == null || DateTime.now().difference(value) >= const Duration(days: 1)) {
+      if (value == null ||
+          DateTime.now().difference(value) >= const Duration(days: 1)) {
         fetchQuote();
       } else {
         setState(() {
@@ -32,7 +34,8 @@ class _TrainPageState extends State<TrainPage> {
   }
 
   Future<void> fetchQuote() async {
-    final response = await http.get(Uri.parse('https://api.quotable.io/random?tags=inspirational|life'));
+    final response = await http.get(
+        Uri.parse('https://api.quotable.io/random?tags=inspirational|life'));
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final newQuote = jsonData['content'];
@@ -52,7 +55,8 @@ class _TrainPageState extends State<TrainPage> {
     if (dateString != null) {
       return DateTime.parse(dateString);
     } else {
-      return DateTime.now().subtract(const Duration(days: 1)); // Assume the quote was not updated
+      return DateTime.now().subtract(
+          const Duration(days: 1)); // Assume the quote was not updated
     }
   }
 
@@ -95,13 +99,14 @@ class _TrainPageState extends State<TrainPage> {
             ),
             Container(
               alignment: Alignment.topCenter,
-              padding: const EdgeInsets.only(top: 50), // Добавляем отступ для показа заголовка вверху
+              padding: const EdgeInsets.only(
+                  top: 50), // Добавляем отступ для показа заголовка вверху
               child: const Text('Другой контент здесь'),
             ),
           ],
         ),
       ),
-      selectedIndex: 0,
+      selectedIndex: widget.selectedIndex, // Используем selectedIndex здесь
       logo: widget.logo,
     );
   }

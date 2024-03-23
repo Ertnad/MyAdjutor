@@ -13,6 +13,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(
+          icon: Icon(Icons.list),
+          label: 'Упражнения',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Главная',
         ),
@@ -24,11 +28,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
       selectedItemColor: Colors.blue,
       currentIndex: selectedIndex,
       onTap: (index) {
-        // Используем Navigator для перехода между страницами
-        if (index == 0) {
-          Navigator.pushReplacementNamed(context, '/'); // Переход на главную страницу
-        } else if (index == 1) {
-          Navigator.pushReplacementNamed(context, '/reports'); // Переход на страницу отчетов
+        switch (index) {
+          case 0:
+            Navigator.pushNamed(
+                context, '/workouts'); // Переход на страницу списка тренировок
+            break;
+          case 1:
+            Navigator.pushNamed(context, '/'); // Переход на главную страницу
+            break;
+          case 2:
+            Navigator.pushNamed(
+                context, '/reports'); // Переход на страницу отчетов
+            break;
         }
       },
     );

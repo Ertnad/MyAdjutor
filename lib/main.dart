@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:myadjutor/pages/train/train_page.dart';
-import 'package:myadjutor/pages/report/report_page.dart'; // Импортируем страницу отчетов
+import 'package:myadjutor/pages/report/report_page.dart';
+import 'package:myadjutor/pages/workout/workout_page.dart'; // Импортируем новую страницу
 
 void main() {
   initializeDateFormatting();
@@ -22,10 +23,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/', // Установим начальный маршрут
+      initialRoute: '/', // Устанавливаем начальный маршрут
       routes: {
-        '/': (context) => TrainPage(logo: logo), // Главная страница
-        '/reports': (context) => ReportPage(selectedIndex: 1, logo: logo),
+        '/': (context) => TrainPage(selectedIndex: 1, logo: logo), // Главная страница
+        '/reports': (context) => ReportPage(selectedIndex: 2, logo: logo), // Страница отчетов
+        '/workouts': (context) => WorkoutListPage(selectedIndex: 0, logo: logo), // Страница со списком тренировок
       },
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myadjutor/bar/bottom_navigation_bar.dart';
 import 'package:myadjutor/pages/base_page.dart';
 
 class ReportPage extends StatelessWidget {

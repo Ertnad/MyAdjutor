@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:myadjutor/bar/bottom_navigation_bar.dart';
-import 'package:myadjutor/bar/side_menu.dart';
-import 'package:myadjutor/bar/top_bar.dart';
+import 'package:myadjutor/pages/bar/bottom_navigation_bar.dart';
+import 'package:myadjutor/pages/bar/side_menu.dart';
+import 'package:myadjutor/pages/bar/top_bar.dart';
 
 class BasePage extends StatelessWidget {
   final Widget body;
