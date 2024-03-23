@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
-
 import '../../disign/dimensions.dart';
 import 'train_item.dart';
 
 class TrainList extends StatelessWidget {
-  const TrainList({super.key});
+  const TrainList({Key? key});
 
   @override
   Widget build(BuildContext context) {

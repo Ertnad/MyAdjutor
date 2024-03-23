@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myadjutor/disign/colors.dart';
-
 import '../../disign/dimensions.dart';
 
 class TrainItem extends StatelessWidget {
-  const TrainItem({super.key});
+  const TrainItem({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -106,3 +105,4 @@ class TrainItem extends StatelessWidget {
     );
   }
 }
+

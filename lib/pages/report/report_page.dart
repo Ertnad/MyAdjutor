@@ -17,7 +17,7 @@ class ReportPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Report Page'),
       ),
-      body: Container(), // Пустой контейнер для тестирования
+      body: const Text('Report Page'), // Пустой контейнер для тестирования
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: selectedIndex,
         onItemTapped: onItemTapped,

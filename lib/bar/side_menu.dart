@@ -25,18 +25,16 @@ class CustomDrawer extends StatelessWidget {
             leading: const Icon(Icons.home),
             title: const Text('Главная'),
             onTap: () {
+              Navigator.pop(context);
               // Обработка нажатия на "Главная"
-              Navigator.pop(context); // Закрываем сайд-меню
-              Navigator.pushReplacementNamed(context, '/home'); // Переходим на страницу "Главная"
             },
           ),
           ListTile(
             leading: const Icon(Icons.bar_chart),
             title: const Text('Отчеты'),
             onTap: () {
+              Navigator.pop(context);
               // Обработка нажатия на "Отчеты"
-              Navigator.pop(context); // Закрываем сайд-меню
-              Navigator.pushReplacementNamed(context, '/reports'); // Переходим на страницу "Отчеты"
             },
           ),
           // Другие пункты меню
@@ -45,3 +43,4 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 }
+
