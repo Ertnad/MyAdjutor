@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomTopAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget logo; // Параметр для логотипа
+  final Widget logo;
   final VoidCallback? onMenuPressed;
   final GlobalKey<ScaffoldState>? scaffoldKey;
 
   const CustomTopAppBar({
     Key? key,
-    required this.logo, // Принимаем логотип как аргумент
+    required this.logo,
     this.onMenuPressed,
     this.scaffoldKey,
   }) : super(key: key);
@@ -16,15 +16,16 @@ class CustomTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: logo,
-      centerTitle: true, // Центрирование заголовка
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        onPressed: onMenuPressed ??
-                () {
-              if (scaffoldKey != null && scaffoldKey!.currentState != null) {
-                scaffoldKey!.currentState!.openDrawer();
-              }
+      centerTitle: true,
+      leading: Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
             },
+          );
+        },
       ),
     );
   }

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myadjutor/bar/bottom_navigation_bar.dart';
 import 'package:myadjutor/bar/side_menu.dart';
 import 'package:myadjutor/bar/top_bar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TrainPage extends StatefulWidget {
   final Widget logo;
@@ -17,7 +17,6 @@ class TrainPage extends StatefulWidget {
 }
 
 class _TrainPageState extends State<TrainPage> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   late String quote = '';
   late DateTime lastUpdateDate;
 
@@ -36,7 +35,7 @@ class _TrainPageState extends State<TrainPage> {
   }
 
   Future<void> fetchQuote() async {
-    final response = await http.get(Uri.parse('https://api.quotable.io/random?tags=inspirational|life&language=ru'));
+    final response = await http.get(Uri.parse('https://api.quotable.io/random?tags=inspirational|life'));
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final newQuote = jsonData['content'];
@@ -65,55 +64,61 @@ class _TrainPageState extends State<TrainPage> {
     prefs.setString('lastUpdateDate', date.toIso8601String());
   }
 
+  Future<void> _handleRefresh() async {
+    await fetchQuote();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: CustomTopAppBar(
         logo: widget.logo,
-        scaffoldKey: scaffoldKey,
       ),
       drawer: const CustomDrawer(),
-      body: Builder(
-        builder: (BuildContext context) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      _getGreeting(),
-                      style: const TextStyle(fontSize: 20),
+      body: RefreshIndicator(
+        onRefresh: _handleRefresh,
+        child: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        _getGreeting(),
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        _getDayInfo(),
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Цитата:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Text(
+                      quote.isNotEmpty ? quote : 'Загрузка цитаты...',
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    Text(
-                      _getDayInfo(),
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  'Цитата:',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  quote.isNotEmpty ? quote : 'Загрузка цитаты...',
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            ],
-          );
-        },
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              padding: const EdgeInsets.only(top: 50), // Добавляем отступ для показа заголовка вверху
+              child: Text('Другой контент здесь'),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: 0,

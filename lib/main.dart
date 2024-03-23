@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:myadjutor/pages/train/train_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initializeDateFormatting();
-  await SharedPreferences.getInstance();
+void main() {
+  initializeDateFormatting();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     Widget logo = Image.asset(
@@ -27,7 +22,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: TrainPage(logo: logo),
+        body: TrainPage(
+          logo: logo,
+        ),
       ),
     );
   }
