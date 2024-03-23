@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myadjutor/pages/bar/bottom_navigation_bar.dart';
+import 'package:myadjutor/pages/base_page.dart';
 import 'package:myadjutor/pages/workout/create_workout_page.dart';
 import 'package:myadjutor/pages/workout/workout_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,13 +36,31 @@ class _WorkoutListPageState extends State<WorkoutListPage> {
     await prefs.setStringList('exercises', exercises);
   }
 
+  Future<void> _refreshPage() async {
+    // Здесь вы можете добавить логику для обновления данных, например, загрузка списка упражнений из базы данных
+    await Future.delayed(Duration(seconds: 1));
+    setState(() {
+      // Обновляем состояние страницы после обновления данных
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Список упражнений'),
+    return BasePage(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: _refreshPage,
+              child: WorkoutList(exercises: exercises),
+            ),
+          ),
+        ],
       ),
-      body: WorkoutList(exercises: exercises), // Передаем список упражнений в виджет WorkoutList
+      selectedIndex: widget.selectedIndex,
+      logo: widget.logo,
+      onRefresh: _refreshPage,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           // Открываем страницу создания упражнения и ожидаем результат
@@ -60,9 +78,7 @@ class _WorkoutListPageState extends State<WorkoutListPage> {
           }
         },
         child: Icon(Icons.add),
-        backgroundColor: Colors.blue,
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(selectedIndex: widget.selectedIndex, logo: widget.logo),
     );
   }
 }

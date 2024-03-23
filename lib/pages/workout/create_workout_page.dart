@@ -12,7 +12,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
   // Метод для сохранения упражнения
   void saveExercise(String exerciseName, String exerciseDescription) {
     // Здесь должна быть ваша логика сохранения данных
-    print('Сохранено упражнение: $exerciseName, Описание: $exerciseDescription');
+    print('Сохранено тренировок: $exerciseName, Описание: $exerciseDescription');
 
     // Очищаем поля ввода после сохранения
     _exerciseNameController.clear();
@@ -26,7 +26,7 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Создать упражнение'),
+        title: Text('Создать тренировку'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -34,24 +34,24 @@ class _CreateWorkoutPageState extends State<CreateWorkoutPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Название упражнения:',
+              'Название тренировки:',
               style: TextStyle(fontSize: 18),
             ),
             TextField(
               controller: _exerciseNameController,
               decoration: InputDecoration(
-                hintText: 'Введите название упражнения',
+                hintText: 'Введите название тренировки',
               ),
             ),
             SizedBox(height: 16),
             Text(
-              'Описание упражнения:',
+              'Описание тренировки:',
               style: TextStyle(fontSize: 18),
             ),
             TextField(
               controller: _exerciseDescriptionController,
               decoration: InputDecoration(
-                hintText: 'Введите описание упражнения',
+                hintText: 'Введите описание тренировки',
               ),
               maxLines: null,
             ),

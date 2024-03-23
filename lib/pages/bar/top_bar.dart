@@ -19,7 +19,13 @@ class CustomTopAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       leading: IconButton(
         icon: const Icon(Icons.menu),
-        onPressed: onMenuPressed,
+        onPressed: onMenuPressed != null
+            ? () {
+          if (scaffoldKey != null) {
+            scaffoldKey!.currentState!.openDrawer();
+          }
+        }
+            : null,
       ),
     );
   }

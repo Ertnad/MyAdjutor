@@ -14,19 +14,12 @@ class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      body: RefreshIndicator(
-        onRefresh: () async {
-          // Вставьте здесь свою логику для обновления страницы
-          // Временная задержка для имитации обновления данных
-          await Future.delayed(Duration(seconds: 1));
-        },
-        child: ListView(
-          children: [
-            Center(
-              child: Text('Report Page'),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          Center(
+            child: Text('Report Page'),
+          ),
+        ],
       ),
       selectedIndex: selectedIndex,
       logo: logo,

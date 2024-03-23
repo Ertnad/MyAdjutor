@@ -1,29 +1,44 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myadjutor/pages/base_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class TrainPage extends StatefulWidget {
+class TrainPage extends StatelessWidget {
   final Widget logo;
-  final int selectedIndex; // Добавлен параметр selectedIndex
+  final int selectedIndex;
 
-  const TrainPage({Key? key, required this.logo, required this.selectedIndex}) : super(key: key);
+  const TrainPage({
+    Key? key,
+    required this.logo,
+    required this.selectedIndex,
+  }) : super(key: key);
 
   @override
-  _TrainPageState createState() => _TrainPageState();
+  Widget build(BuildContext context) {
+    return BasePage(
+      body: _TrainPageContent(),
+      selectedIndex: selectedIndex,
+      logo: logo,
+    );
+  }
 }
 
-class _TrainPageState extends State<TrainPage> {
+class _TrainPageContent extends StatefulWidget {
+  @override
+  _TrainPageContentState createState() => _TrainPageContentState();
+}
+
+class _TrainPageContentState extends State<_TrainPageContent> {
   late String quote = '';
   late DateTime lastUpdateDate;
+  bool _isRefreshing = false;
 
   @override
   void initState() {
     super.initState();
     getLastUpdateDate().then((value) {
-      if (value == null ||
-          DateTime.now().difference(value) >= const Duration(days: 1)) {
+      if (value == null || DateTime.now().difference(value) >= const Duration(days: 1)) {
         fetchQuote();
       } else {
         setState(() {
@@ -34,17 +49,25 @@ class _TrainPageState extends State<TrainPage> {
   }
 
   Future<void> fetchQuote() async {
+    setState(() {
+      _isRefreshing = true; // Установим флаг обновления перед запросом
+    });
     final response = await http.get(
-        Uri.parse('https://api.quotable.io/random?tags=inspirational|life'));
+      Uri.parse('https://api.quotable.io/random?tags=inspirational|life'),
+    );
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final newQuote = jsonData['content'];
       setState(() {
         quote = newQuote;
         lastUpdateDate = DateTime.now();
+        _isRefreshing = false; // Сбросим флаг обновления после получения данных
       });
       saveLastUpdateDate(lastUpdateDate);
     } else {
+      setState(() {
+        _isRefreshing = false; // Обработка ошибки, сброс флага обновления
+      });
       throw Exception('Failed to load quote');
     }
   }
@@ -55,8 +78,7 @@ class _TrainPageState extends State<TrainPage> {
     if (dateString != null) {
       return DateTime.parse(dateString);
     } else {
-      return DateTime.now().subtract(
-          const Duration(days: 1)); // Assume the quote was not updated
+      return DateTime.now().subtract(const Duration(days: 1));
     }
   }
 
@@ -71,43 +93,38 @@ class _TrainPageState extends State<TrainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BasePage(
-      body: RefreshIndicator(
-        onRefresh: _handleRefresh,
-        child: ListView(
-          children: <Widget>[
-            WelcomeAndDayInfo(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Цитата:',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return RefreshIndicator(
+      onRefresh: _handleRefresh,
+      child: ListView(
+        children: <Widget>[
+          WelcomeAndDayInfo(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
+                const Text(
+                  'Цитата:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    quote.isNotEmpty ? quote : 'Загрузка цитаты...',
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Text(
-                      quote.isNotEmpty ? quote : 'Загрузка цитаты...',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container(
-              alignment: Alignment.topCenter,
-              padding: const EdgeInsets.only(
-                  top: 50), // Добавляем отступ для показа заголовка вверху
-              child: const Text('Другой контент здесь'),
-            ),
-          ],
-        ),
+          ),
+          Container(
+            alignment: Alignment.topCenter,
+            padding: const EdgeInsets.only(top: 50),
+            child: const Text('Другой контент здесь'),
+          ),
+        ],
       ),
-      selectedIndex: widget.selectedIndex, // Используем selectedIndex здесь
-      logo: widget.logo,
     );
   }
 }

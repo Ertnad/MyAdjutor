@@ -8,11 +8,15 @@ class BasePage extends StatelessWidget {
   final Widget body;
   final int selectedIndex;
   final Widget logo;
+  final Future<void> Function()? onRefresh; // Make onRefresh nullable
+  final Widget? floatingActionButton; // Add floatingActionButton parameter
 
   const BasePage({
     required this.body,
     required this.selectedIndex,
     required this.logo,
+    this.onRefresh, // Update the parameter to be nullable
+    this.floatingActionButton, // Add floatingActionButton parameter
   });
 
   @override
@@ -22,11 +26,15 @@ class BasePage extends StatelessWidget {
         logo: logo,
       ),
       drawer: const CustomDrawer(),
-      body: body,
+      body: RefreshIndicator(
+        onRefresh: onRefresh ?? () async {}, // Provide a default value if onRefresh is null
+        child: body,
+      ),
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: selectedIndex,
-        logo: logo, // Передаем параметр logo в CustomBottomNavigationBar
+        logo: logo,
       ),
+      floatingActionButton: floatingActionButton, // Set floatingActionButton
     );
   }
 }
