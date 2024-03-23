@@ -122,9 +122,6 @@ class _TrainPageState extends State<TrainPage> {
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: 0,
-        onItemTapped: (index) {
-          // Handle bottom navigation bar item tapped
-        },
       ),
     );
   }

@@ -17,15 +17,9 @@ class CustomTopAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: logo,
       centerTitle: true,
-      leading: Builder(
-        builder: (BuildContext context) {
-          return IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          );
-        },
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        onPressed: onMenuPressed,
       ),
     );
   }

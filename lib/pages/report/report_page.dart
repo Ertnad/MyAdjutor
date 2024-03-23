@@ -3,11 +3,9 @@ import '../../bar/bottom_navigation_bar.dart'; // Импортируйте ст�
 
 class ReportPage extends StatelessWidget {
   final int selectedIndex;
-  final void Function(int) onItemTapped;
 
   const ReportPage({
     required this.selectedIndex,
-    required this.onItemTapped,
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +18,6 @@ class ReportPage extends StatelessWidget {
       body: const Text('Report Page'), // Пустой контейнер для тестирования
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: selectedIndex,
-        onItemTapped: onItemTapped,
       ),
     );
   }
