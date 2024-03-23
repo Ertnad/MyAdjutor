@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
+  final Widget logo;
 
   const CustomBottomNavigationBar({
     required this.selectedIndex,
+    required this.logo,
     Key? key,
   }) : super(key: key);
 
@@ -14,7 +16,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.list),
-          label: 'Упражнения',
+          label: 'Список тренировок',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -28,17 +30,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
       selectedItemColor: Colors.blue,
       currentIndex: selectedIndex,
       onTap: (index) {
-        switch (index) {
+        switch(index) {
           case 0:
-            Navigator.pushNamed(
-                context, '/workouts'); // Переход на страницу списка тренировок
+            Navigator.pushReplacementNamed(context, '/workouts'); // Переход на страницу списка тренировок
             break;
           case 1:
-            Navigator.pushNamed(context, '/'); // Переход на главную страницу
+            Navigator.pushReplacementNamed(context, '/'); // Переход на главную страницу
             break;
           case 2:
-            Navigator.pushNamed(
-                context, '/reports'); // Переход на страницу отчетов
+            Navigator.pushReplacementNamed(context, '/reports'); // Переход на страницу отчетов
             break;
         }
       },

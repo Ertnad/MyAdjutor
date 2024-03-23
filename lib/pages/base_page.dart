@@ -25,6 +25,7 @@ class BasePage extends StatelessWidget {
       body: body,
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: selectedIndex,
+        logo: logo, // Передаем параметр logo в CustomBottomNavigationBar
       ),
     );
   }
