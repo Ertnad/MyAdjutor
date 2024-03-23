@@ -1,33 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:myadjutor/pages/base_page.dart';
+import 'package:myadjutor/pages/bar/bottom_navigation_bar.dart';
+import 'package:myadjutor/pages/workout/workout_item_page.dart';
+
 
 class WorkoutListPage extends StatelessWidget {
   final int selectedIndex;
   final Widget logo;
 
-  const WorkoutListPage({
-    required this.selectedIndex,
-    required this.logo,
-    Key? key,
-  }) : super(key: key);
+  const WorkoutListPage({Key? key, required this.selectedIndex, required this.logo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BasePage(
-      body: ListView.builder(
-        itemCount: 15, // Замените на фактическое количество тренировок
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Workout ${index + 1}'),
-            subtitle: Text('Description of workout ${index + 1}'),
-            onTap: () {
-              // Обработка нажатия на элемент списка
-            },
-          );
-        },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Список упражнений'),
       ),
-      selectedIndex: selectedIndex,
-      logo: logo,
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('Упражнение 1'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExercisePage(exerciseName: 'Упражнение 1')),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Упражнение 2'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExercisePage(exerciseName: 'Упражнение 2')),
+              );
+            },
+          ),
+          // Добавьте сюда остальные упражнения...
+        ],
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(selectedIndex: selectedIndex),
     );
   }
 }
