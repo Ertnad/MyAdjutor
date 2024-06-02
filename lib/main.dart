@@ -1,36 +1,35 @@
-import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:myadjutor/pages/bar/side_menu.dart';
-import 'package:myadjutor/pages/bar/top_bar.dart';
-import 'package:myadjutor/pages/train/train_page.dart';
-import 'package:myadjutor/pages/report/report_page.dart';
-import 'package:myadjutor/pages/workout/workout_page.dart';
+import 'package:myadjutor/widgets/local_notifications.dart';
 
-void main() {
-  initializeDateFormatting();
-  runApp(MyApp());
+import 'core/app_export.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Устанавливаем стиль для статус-бара глобально
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // делает статус-бар прозрачным
+    statusBarIconBrightness: Brightness.dark, // устанавливает цвет иконок в статус-баре на темный (черный)
+    statusBarBrightness: Brightness.dark, // для iOS
+  ));
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalNotifications.init();
+
+  initializeDateFormatting('ru').then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget logo = Image.asset(
-      'assets/images/train.png',
-      width: 35,
-      height: 35,
-    );
-
+    AppMetrica.activate(AppMetricaConfig('18ca9986-9ada-44a9-9b66-379cffdccc9a'));
     return MaterialApp(
-      title: 'MyAdjutor',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'ProjectPal',
+      onGenerateRoute: AppRoutes.generateRoute,
       initialRoute: '/',
-      routes: {
-        '/': (context) => TrainPage(logo: logo, selectedIndex: 1,),
-        '/reports': (context) => ReportPage(selectedIndex: 2, logo: logo),
-        '/workouts': (context) => WorkoutListPage(selectedIndex: 0, logo: logo),
-      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }

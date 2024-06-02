@@ -12,12 +12,25 @@ dependencies:
   flutter:
     sdk: flutter
   easy_localization: ^3.0.0
-  shared_preferences: ^2.0.8
-  http: ^0.13.3
-  flutter_svg: ^1.1.6
-  intl: ^0.18.1  # Добавляем пакет intl
   flutter_localizations:
     sdk: flutter
+  flutter_local_notifications: ^17.1.2
+  file_picker: ^8.0.1
+  flutter_svg: ^2.0.9
+  http: ^1.2.0
+  intl: ^0.19.0
+  mime: ^1.0.0
+  appmetrica_plugin: ^2.0.0
+  fl_chart: ^0.68.0
+  shared_preferences: ^2.0.0
+  flutter_secure_storage: ^9.2.2
+  image_picker: ^1.1.1
+  path_provider: ^2.0.2
+  dio: ^5.1.1
+  url_launcher: ^6.0.17
+  open_file: ^3.0.3
+
+
 
 cupertino_icons: ^1.0.2
 
@@ -25,6 +38,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
 
 flutter:
   uses-material-design: true
