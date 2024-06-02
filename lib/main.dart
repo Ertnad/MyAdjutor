@@ -3,18 +3,15 @@ import 'package:myadjutor/widgets/local_notifications.dart';
 import 'core/app_export.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await LocalNotifications.init();
   // Устанавливаем стиль для статус-бара глобально
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // делает статус-бар прозрачным
     statusBarIconBrightness: Brightness.dark, // устанавливает цвет иконок в статус-баре на темный (черный)
     statusBarBrightness: Brightness.dark, // для iOS
   ));
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await LocalNotifications.init();
 
   initializeDateFormatting('ru').then((_) {
     runApp(MyApp());

@@ -1,4 +1,5 @@
 import 'package:myadjutor/core/app_export.dart';
+import 'package:myadjutor/widgets/local_notifications.dart';
 
 class MainPageContent extends StatefulWidget {
   const MainPageContent({Key? key}) : super(key: key);
@@ -108,7 +109,11 @@ class _MainPageContentState extends State<MainPageContent> {
         SizedBox(height: 20),
         ElevatedButton.icon(
           icon: Icon(Icons.notifications_outlined),
-          onPressed: () {},
+          onPressed: () {
+            LocalNotifications.showSimpleNotification(
+              title: "Simple Notification",
+              body: "This is a simple notification",
+              payload: "This is simple data");},
           label: Text('Нажми сюда сука'),
         )
       ],
