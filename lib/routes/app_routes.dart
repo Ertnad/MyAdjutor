@@ -4,7 +4,7 @@ class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => WelcomePage1());
+        return MaterialPageRoute(builder: (_) => MainPage());
       default:
         return _errorRoute(settings);
     }

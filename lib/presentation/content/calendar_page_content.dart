@@ -43,7 +43,7 @@ class _CalendarPageContentState extends State<CalendarPageContent> {
                       child: CustomText(
                         text: 'Календарь',
                         style: figmaTextStyles.header1Medium.copyWith(
-                          color: FigmaColors.darkBlueMain,
+                          color: FigmaColors.main,
                         ),
                       ),
                     ),

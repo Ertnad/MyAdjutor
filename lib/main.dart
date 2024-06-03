@@ -8,9 +8,10 @@ void main() async {
   await LocalNotifications.init();
   // Устанавливаем стиль для статус-бара глобально
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // делает статус-бар прозрачным
-    statusBarIconBrightness: Brightness.dark, // устанавливает цвет иконок в статус-баре на темный (черный)
-    statusBarBrightness: Brightness.dark, // для iOS
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+    systemNavigationBarColor: FigmaColors.background,
+    systemNavigationBarDividerColor: FigmaColors.background,
   ));
 
   initializeDateFormatting('ru').then((_) {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppMetrica.activate(AppMetricaConfig('18ca9986-9ada-44a9-9b66-379cffdccc9a'));
     return MaterialApp(
-      title: 'ProjectPal',
+      title: 'MyAdjutor',
       onGenerateRoute: AppRoutes.generateRoute,
       initialRoute: '/',
       debugShowCheckedModeBanner: false,

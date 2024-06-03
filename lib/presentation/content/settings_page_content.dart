@@ -22,7 +22,7 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
             child: CustomText(
               text: 'Настройки',
               style: figmaTextStyles.header1Medium.copyWith(
-                color: FigmaColors.darkBlueMain,
+                color: FigmaColors.main,
               ),
             ),
           ),

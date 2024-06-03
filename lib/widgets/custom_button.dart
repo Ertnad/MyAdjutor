@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          color: FigmaColors.darkBlueMain,
+          color: FigmaColors.main,
           borderRadius: BorderRadius.circular(12),
         ),
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),

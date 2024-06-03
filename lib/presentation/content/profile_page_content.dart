@@ -42,7 +42,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CustomText(text: "Почта", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Почта", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _loginController.text,
@@ -51,7 +51,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
                   enabled: isEditing,
                 ),
                 SizedBox(height: 16),
-                CustomText(text: "Имя", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Имя", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _nameController.text,
@@ -60,7 +60,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
                   enabled: isEditing,
                 ),
                 SizedBox(height: 16),
-                CustomText(text: "Фамилия", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Фамилия", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _surnameController.text,
@@ -69,7 +69,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
                   enabled: isEditing,
                 ),
                 SizedBox(height: 16),
-                CustomText(text: "Отчество", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Отчество", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _patronymicController.text,
@@ -78,7 +78,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
                   enabled: isEditing,
                 ),
                 SizedBox(height: 16),
-                CustomText(text: "Номер телефона", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Номер телефона", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _phoneNumberController.text,
@@ -87,7 +87,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
                   enabled: isEditing,
                 ),
                 SizedBox(height: 16),
-                CustomText(text: "Роль", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Роль", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _roleController.text,
@@ -96,7 +96,7 @@ class _ProfilePageContentState extends State<ProfilePageContent> {
                   enabled: false,
                 ),
                 SizedBox(height: 16),
-                CustomText(text: "Номер группы", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.darkBlueMain), align: TextAlign.center,),
+                CustomText(text: "Номер группы", style: figmaTextStyles.caption1Medium.copyWith(color: FigmaColors.main), align: TextAlign.center,),
                 SizedBox(height: 5),
                 CustomTextField(
                   hintText: _groupIdController.text,

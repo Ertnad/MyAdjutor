@@ -30,6 +30,5 @@ export 'package:myadjutor/presentation/content/settings_page_content.dart';
 export 'package:myadjutor/presentation/pages/profile_page.dart';
 export 'package:myadjutor/presentation/content/profile_page_content.dart';
 export 'package:myadjutor/widgets/custom_pie_chart.dart';
-export 'package:myadjutor/widgets/custom_notification.dart';
 export 'package:myadjutor/presentation/content/project_page_content.dart';
 export 'package:shared_preferences/shared_preferences.dart';

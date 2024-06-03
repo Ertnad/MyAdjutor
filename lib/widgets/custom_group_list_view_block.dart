@@ -38,7 +38,7 @@ class CustomGroupListViewBlock extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
-                  color: FigmaColors.darkBlueMain,
+                  color: FigmaColors.main,
                 ),
               ),
             ),

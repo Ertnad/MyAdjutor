@@ -56,7 +56,7 @@ class _CustomPieChartState extends State<CustomPieChart> {
               child: CustomText(
                 text: 'Всего заданий: ${widget.allTasks}',
                 style: figmaTextStyles.header2Medium.copyWith(
-                  color: touchedIndex == 0 ? FigmaColors.selectorColor : FigmaColors.darkBlueMain,
+                  color: touchedIndex == 0 ? FigmaColors.selectorColor : FigmaColors.main,
                 ),
               ),
             ),
@@ -69,7 +69,7 @@ class _CustomPieChartState extends State<CustomPieChart> {
               child: CustomText(
                 text: 'Всего проектов: ${widget.incompleteTasks}',
                 style: figmaTextStyles.header2Medium.copyWith(
-                  color: touchedIndex == 1 ? FigmaColors.selectorColor : FigmaColors.darkBlueMain,
+                  color: touchedIndex == 1 ? FigmaColors.selectorColor : FigmaColors.main,
                 ),
               ),
             ),
@@ -82,10 +82,10 @@ class _CustomPieChartState extends State<CustomPieChart> {
   List<PieChartSectionData> _showingSections() {
     return [
       PieChartSectionData(
-        color: FigmaColors.darkBlueMain,
+        color: FigmaColors.main,
         value: widget.allTasks.toDouble(),
         radius: touchedIndex == 0 ? 70.0 : 50.0,
-        badgeWidget: _buildBadgeWidget(FigmaColors.darkBlueMain),
+        badgeWidget: _buildBadgeWidget(FigmaColors.main),
       ),
       PieChartSectionData(
         color: FigmaColors.lightRedMain,

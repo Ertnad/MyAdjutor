@@ -26,7 +26,7 @@ class _CustomSideMenuState extends State<CustomSideMenu> {
 
     return Drawer(
       child: Container(
-        color: FigmaColors.whiteBackground,
+        color: FigmaColors.background,
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,14 +35,14 @@ class _CustomSideMenuState extends State<CustomSideMenu> {
             CustomText(
               text: '',
               style: widget.figmaTextStyles.mediumText.copyWith(
-                color: FigmaColors.darkBlueMain,
+                color: FigmaColors.main,
               ),
             ),
             SizedBox(height: 5),
             CustomText(
               text: '',
               style: widget.figmaTextStyles.regularText.copyWith(
-                color: FigmaColors.darkBlueMain,
+                color: FigmaColors.main,
               ),
             ),
             SizedBox(height: 30),
@@ -55,14 +55,14 @@ class _CustomSideMenuState extends State<CustomSideMenu> {
             ),
             SizedBox(height: 20),
             Divider(
-              color: FigmaColors.darkBlueMain.withOpacity(0.2),
+              color: FigmaColors.main.withOpacity(0.2),
               thickness: 1,
             ),
             SizedBox(height: 10),
             CustomText(
               text: 'Основные функции',
               style: widget.figmaTextStyles.regularText.copyWith(
-                color: FigmaColors.darkBlueMain,
+                color: FigmaColors.main,
               ),
             ),
             SizedBox(height: 10),
@@ -88,7 +88,7 @@ class _CustomSideMenuState extends State<CustomSideMenu> {
             ),
             SizedBox(height: 20),
             Divider(
-              color: FigmaColors.darkBlueMain.withOpacity(0.2),
+              color: FigmaColors.main.withOpacity(0.2),
               thickness: 1,
             ),
             SizedBox(height: 10),
@@ -119,13 +119,13 @@ class _CustomSideMenuState extends State<CustomSideMenu> {
           children: [
             Icon(
               icon,
-              color: iconColor ?? FigmaColors.darkBlueMain,
+              color: iconColor ?? FigmaColors.main,
             ),
             SizedBox(width: 24),
             CustomText(
               text: text,
               style: widget.figmaTextStyles.regularText.copyWith(
-                color: FigmaColors.darkBlueMain,
+                color: FigmaColors.main,
               ),
             ),
           ],

@@ -39,13 +39,13 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
               widget.onChanged(value);
             });
           },
-          activeColor: FigmaColors.darkBlueMain, // Устанавливаем цвет галочки
+          activeColor: FigmaColors.main, // Устанавливаем цвет галочки
         ),
         if (widget.label != null)
           Text(
             widget.label!,
             style: widget.figmaTextStyles.subHeaderRegular.copyWith(
-              color: FigmaColors.darkBlueMain,
+              color: FigmaColors.main,
             ),
           ),
       ],

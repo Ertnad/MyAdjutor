@@ -51,11 +51,11 @@ class _TaskBlockWidgetState extends State<TaskBlockWidget> {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: FigmaColors.contrastToMain,
+            color: FigmaColors.main,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: FigmaColors.darkBlueMain,
+                color: FigmaColors.main,
                 offset: Offset(0, 6),
                 blurRadius: 6,
               ),
@@ -78,13 +78,13 @@ class _TaskBlockWidgetState extends State<TaskBlockWidget> {
                             CustomText(
                               text: widget.subject,
                               style: figmaTextStyles.header2Medium.copyWith(
-                                color: FigmaColors.darkBlueMain,
+                                color: FigmaColors.main,
                               ),
                             ),
                             CustomText(
                               text: widget.teacher,
                               style: figmaTextStyles.caption1Regular.copyWith(
-                                color: FigmaColors.darkBlueMain,
+                                color: FigmaColors.main,
                               ),
                             ),
                           ],
@@ -97,7 +97,7 @@ class _TaskBlockWidgetState extends State<TaskBlockWidget> {
                           CustomText(
                             text: '$remainingDaysText',
                             style: figmaTextStyles.header2Medium.copyWith(
-                              color: FigmaColors.darkBlueMain,
+                              color: FigmaColors.main,
                             ),
                           ),
                         ],

@@ -3,13 +3,12 @@ import 'package:myadjutor/core/app_export.dart';
 class FigmaColors {
   const FigmaColors();
 
-  static const Color lightBlueBackground = Color(0xff89c7ea);
-  static const Color whiteBackground = Color(0xfff7faf8);
-  static const Color darkBlueMain = Color(0xff155e07);
-  static const Color lightRedMain = Color(0xffFF6A62);
-  static const Color contrastToMain = Color(0xff009caf);
+  static const Color background = Color(0xff282524);
+  static const Color main = Color(0xff907063);
+  static const Color lightRedMain = Color(0xff679674);
   static const Color exitColor = Color(0xff82bdcc);
-  static const Color selectorColor = Color(0xff319817);
+  static const Color selectorColor = Color(0xffc5483a);
+  static const Color darkSelectorColor = Color(0xff907063);
   static const Color whiteText = Color(0xffffffff);
   static const Color red = Color(0xffd00f0f);
   static const Color exitDayColor = Color(0xff98BDC9);

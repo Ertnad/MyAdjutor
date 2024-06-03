@@ -12,7 +12,7 @@ class CustomBottomBar extends StatelessWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: FigmaColors.background,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -60,7 +60,7 @@ class CustomBottomBar extends StatelessWidget {
     required String pageName,
   }) {
     final bool isSelected = pageName == currentPage;
-    final Color selectorColor = isSelected ? FigmaColors.selectorColor : FigmaColors.darkBlueMain;
+    final Color selectorColor = isSelected ? FigmaColors.selectorColor : FigmaColors.darkSelectorColor;
 
     return InkWell(
       onTap: () {

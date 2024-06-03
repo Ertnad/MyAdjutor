@@ -26,13 +26,13 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       style: figmaTextStyles.headerTextRegular.copyWith(
-        color: FigmaColors.darkBlueMain,
+        color: FigmaColors.main,
       ),
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: figmaTextStyles.headerTextRegular.copyWith(
-          color: FigmaColors.darkBlueMain,
+          color: FigmaColors.main,
         ),
         border: OutlineInputBorder(),
         contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),

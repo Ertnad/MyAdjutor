@@ -11,10 +11,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: FigmaColors.background,
       elevation: 0,
       leading: IconButton(
-        icon: Icon(Icons.menu, color: FigmaColors.darkBlueMain), // установить цвет иконки на черный
+        icon: Icon(Icons.menu, color: FigmaColors.main), // установить цвет иконки на черный
         onPressed: onMenuPressed,
       ),
       centerTitle: true,
@@ -25,13 +25,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.account_circle, color: FigmaColors.darkBlueMain), // установить цвет иконки на черный
+          icon: Icon(Icons.account_circle, color: FigmaColors.main), // установить цвет иконки на черный
           onPressed: () {
             AppRoutes.navigateToPageWithFadeTransition(context, ProfilePage());
           },
         ),
       ],
-      systemOverlayStyle: SystemUiOverlayStyle.dark,
     );
   }
 

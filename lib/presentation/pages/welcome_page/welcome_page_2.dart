@@ -13,7 +13,7 @@ class WelcomePage2 extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(color: FigmaColors.whiteBackground),
+        decoration: BoxDecoration(color: FigmaColors.background),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +34,7 @@ class WelcomePage2 extends StatelessWidget {
                     'ProjectPal',
                     textAlign: TextAlign.center,
                     style: figmaTextStyles.header1Bold.copyWith(
-                      color: FigmaColors.darkBlueMain,
+                      color: FigmaColors.main,
                     ),
                   ),
                 ],
@@ -54,7 +54,7 @@ class WelcomePage2 extends StatelessWidget {
                 'Наблюдайте за прогрессом выполнения ваших работ',
                 textAlign: TextAlign.center,
                 style: figmaTextStyles.header1Medium.copyWith(
-                  color: FigmaColors.darkBlueMain,
+                  color: FigmaColors.main,
                 ),
               ),
             ),

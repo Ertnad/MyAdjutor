@@ -65,7 +65,7 @@ class _UnderlineTextState extends State<UnderlineText> {
             widget.text,
             style: widget.textStyle.copyWith(
               color: _underlineColor == FigmaColors.selectorColor
-                  ? FigmaColors.darkBlueMain
+                  ? FigmaColors.main
                   : widget.defaultColor,
             ),
           ),
